@@ -1,5 +1,5 @@
-<?php $this->title = "Mon Blog"; ?>
+<?php $this->title = "Home"; ?>
 
 Home page
-
+<br>
 <?= $this->clean('abcd') ?>

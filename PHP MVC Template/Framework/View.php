@@ -18,6 +18,48 @@ class View
     private $title;
     
     /**
+     * Action.
+     *
+     * @var String
+     */
+    private $action;
+    
+    /**
+     * Controler.
+     *
+     * @var String
+     */
+    private $controler;
+    
+    /**
+     * Warning message(s).
+     *
+     * @var Array
+     */
+    private $msgWarning;
+    
+    /**
+     * Error message(s).
+     *
+     * @var Array
+     */
+    private $msgError;
+    
+    /**
+     * Success message(s).
+     *
+     * @var Array
+     */
+    private $msgSuccess;
+    
+    /**
+     * Info message(s).
+     *
+     * @var Array
+     */
+    private $msgInfo;
+    
+    /**
      * Constructor.
      * 
      * @param String $action
@@ -29,6 +71,13 @@ class View
         if ($controler != "")
             $file = $file.$controler."/";
         $this->file = $file.$action.".php";
+        
+        $this->action = $action;
+        $this->controler = $controler;
+        $this->msgInfo = array();
+        $this->msgError = array();
+        $this->msgWarning = array();
+        $this->msgSuccess = array();
     }
     
     /**
@@ -43,7 +92,15 @@ class View
         
         return array('title' => $this->title,
                     'content' => $content,
-                    'webRoot' => $webRoot);
+                    'webRoot' => $webRoot,
+                    'messages' => array(
+                        array('data' => $this->msgInfo,       'name' => 'info'),
+                        array('data' => $this->msgError,      'name' => 'danger'),
+                        array('data' => $this->msgWarning,    'name' => 'warning'),
+                        array('data' => $this->msgSuccess,    'name' => 'success'),
+                    ),
+                    'action' => $this->action,
+                    'controler' => $this->controler);
     }
 	
     /**

@@ -24,7 +24,7 @@ abstract class ControlerSession extends Controler
      */
     public function setRequest(Request $request)
     {
-        $this->parameters = $request;
+        parent::setRequest($request);
         $this->sessions = new Request($_SESSION);
         $this->cookies = new Request($_COOKIE);
     }

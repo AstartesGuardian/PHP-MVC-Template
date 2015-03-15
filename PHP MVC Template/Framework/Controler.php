@@ -29,7 +29,7 @@ abstract class Controler
      * 
      * @var Array
      */
-    protected $viewData;
+    protected $viewData = array();
 
 
     /**
@@ -58,7 +58,6 @@ abstract class Controler
             $this->action = $action;
             
             $this->controler = str_replace(Configuration::get('controlerPrefix', 'Controler'), "", $controlerClass);
-            $this->viewData = array();
             
             $this->{$this->action}();
             
@@ -80,12 +79,14 @@ abstract class Controler
     /**
      * Set the view which will be called.
      * 
-     * @param String $controlerName
      * @param String $actionName
+     * @param String $controlerName
      */
-    protected function setView($controlerName, $actionName)
+    protected function setView($actionName, $controlerName = null)
     {
-        $this->controler = $controlerName;
+        if($controlerName != null)
+            $this->controler = $controlerName;
+        
         $this->action = $actionName;
     }
 

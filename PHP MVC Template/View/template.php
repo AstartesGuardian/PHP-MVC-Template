@@ -17,6 +17,19 @@
                 </a>
             </header>
             
+            
+            
+            <?php foreach($messages as $mk => $mv) : ?>
+                <?php foreach($mv['data'] as $k => $v) : ?>
+                    <div class="panel panel-<?= $mv['name'] ?>">
+                        <div class="panel-heading"><strong><?= $k ?></strong></div>
+                        <div class="panel-body"><?= $v ?></div>
+                    </div>
+                <?php endforeach; ?>
+            <?php endforeach; ?>
+            
+            
+            
             <div id="content">
                 <?= $content ?>
             </div>
