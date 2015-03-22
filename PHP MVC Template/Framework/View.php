@@ -4,6 +4,13 @@ require_once 'Configuration.php';
 class View
 {
     /**
+     * Resources path
+     *
+     * @var String
+     */
+    private $resources;
+    
+    /**
      * File to use.
      *
      * @var String
@@ -78,6 +85,8 @@ class View
         $this->msgError = array();
         $this->msgWarning = array();
         $this->msgSuccess = array();
+        
+        $this->resources = Configuration::get('resourcesPath', 'Resources');
     }
     
     /**
